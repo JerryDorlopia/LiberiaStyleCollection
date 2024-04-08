@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# Set default page to login.php
+DirectoryIndex login.php
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+# Redirect non-www to www (optional)
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
